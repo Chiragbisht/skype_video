@@ -1,22 +1,23 @@
 # Use an official Python runtime as a parent image
 FROM python:3.12
 
-# Set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
 # Set the working directory in the container
 WORKDIR /app
 
-# Install dependencies
-COPY requirements.txt /app/
+# Copy the requirements file into the container at /app
+COPY requirements.txt .
+
+# Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the current directory contents into the container at /app
-COPY . /app/
+# Copy the rest of the application code into the container
+COPY . .
 
-# Expose port 8000 for the application
+# Collect static files
+RUN python manage.py collectstatic --noinput
+
+# Expose port 8000 for the app
 EXPOSE 8000
 
-# Command to run the application
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "skypeproject.wsgi:application"]
+# Run the application using Gunicorn
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "myproject.wsgi:application"]
