@@ -7,7 +7,7 @@
   }
 
 body{
-    background-color: rgba(232,233,239,1);
+    background-color: rgb(63, 65, 86);
     font-family: 'Roboto', sans-serif;
 }
 
@@ -17,7 +17,7 @@ body{
 #form-container{
     width: 400px;
     box-shadow:var(--shaddow);
-    background-color: #fff;
+    background-color: #51546e;
     padding: 30px;
     border-radius: 5px;
     position: fixed;
@@ -38,14 +38,14 @@ body{
 }
 
 #welcome-message h1{
-    font-size: 36px;
+    font-size: 34px;
 }
 
 
 #welcome-message p{
     font-size: 16px;
     color: rgb(97, 98, 105);
-    font-weight: 300;
+    font-weight: 200;
 }
 
 .form-field{
@@ -67,7 +67,7 @@ body{
 }
 
 .form-field input[type='submit']{
-    background-color: rgb(75, 93, 172);
+    background-color: rgb(106, 172, 190);
     border:none;
     color: #fff;
 }
